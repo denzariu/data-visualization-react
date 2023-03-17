@@ -15,7 +15,8 @@ export default class Home extends Component<Props, State> {
     return (
       <>
         <div>Today's date: {getDate()}</div>
-        <div>{getBigrams("./faji ' []hello")}</div>
+        <div>{"./faji ' hello"}</div>
+        <div>{getBigrams("./faji ' hello")}</div>
       </>
     )
   }

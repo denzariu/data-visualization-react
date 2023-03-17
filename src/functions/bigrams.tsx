@@ -10,19 +10,32 @@ export function getDate(): string {
     return currentDate;
 }
 
-export function getBigrams(text:string): string {
+function nextLetterProbability(text:string): Map<string, number> {
+    let frequencyOfPair = new Map<string, number>();
+    const textLength: number = text.length;
 
-    /*
-    text_to_replace = ['!', '.', ',', '\'', '"', '@', ':', '+', '\\', '?', '#', '$', '&', '(', ')', '[', ']']
-    for character in text_to_replace:
-        text.replace(character, '')
-    */
-    let textReplica:string = text;
+    for (let index:number = 0; index < textLength - 1; index++ ) {
+        let pairOfLetters: string = text[index] + text[index + 1];
 
-    const textToReplace: Array<string> = ['!', '.', ',', '\'', '"', '\/', '@', ':', '+', '\\', '?', '#', '$', '&', '(', ')', '[', ']']
+        let pair: number|undefined = frequencyOfPair.get(pairOfLetters);
+        if (pair !== undefined)
+            frequencyOfPair.set(pairOfLetters, pair + 1);
+        else 
+            frequencyOfPair.set(pairOfLetters, 1);
+    }
+
+    return frequencyOfPair;
+}
+
+export function getBigrams(text:string): Map<string, number> {
+    let textReplica: string = text;
+
+    const textToReplace: Array<string> = ['!', '.', ',', '\'', '"', '/', '@', ':', '+', '\\', '?', '#', '$', '&', '(', ')', '[', ']']
     textToReplace.forEach(element => {
         textReplica = textReplica.replaceAll(element, '');
     });
 
-    return textReplica;
+    let pairFrequency = nextLetterProbability(textReplica); 
+
+    return pairFrequency;
 }
