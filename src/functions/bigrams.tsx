@@ -35,7 +35,15 @@ export function getBigrams(text:string): Map<string, number> {
         textReplica = textReplica.replaceAll(element, '');
     });
 
-    let pairFrequency = nextLetterProbability(textReplica); 
+    let pairFrequency: Map<string, number> = nextLetterProbability(textReplica); 
 
     return pairFrequency;
 }
+
+export function getColorForFrequency (frequency: number): string {
+    if (frequency === 0) {
+      return '#333';
+    }
+    const hue = 120 - (frequency / 500) * 120;
+    return `hsl(${hue}, 100%, 50%)`;
+  };
