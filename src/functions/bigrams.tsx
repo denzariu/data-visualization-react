@@ -66,6 +66,6 @@ export function getColorForFrequency (frequency: number, max_freq: number): stri
     if (frequency === 0) 
       return `0rem`;
     
-    const width = (frequency / max_freq);
+    const width = (frequency / max_freq) * 0.8;
     return `${width}rem`;
   };

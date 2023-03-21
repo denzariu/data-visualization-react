@@ -31,11 +31,11 @@
     color: #fff;
     padding: 0.5rem 1rem;
     mmargin-right: 1rem;
-    font-size: 1rem;
+    font-size: 0.5rem;
     font-weight: bold;
     border-radius: 0.5rem;
     text-transform: uppercase;
-    letter-spacing: 0.1rem;
+    letter-spacing: 0.08rem;
     cursor: pointer;
     transition: background-color 0.3s ease;
   }
@@ -57,7 +57,7 @@ body {
 
 tbody tr {
     display: flex;
-    width: 27rem;
+    width: 21.6rem;
     height: 1rem;
 }
 
@@ -65,14 +65,15 @@ tbody tr td {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 1rem;
+  width: 0.8rem;
   color:#fff;
+  font-size: 0.8rem;
 }
 
 tbody tr td div {
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 0.7rem;
+  font-size: 0.4rem;
   color:#000;
 }
