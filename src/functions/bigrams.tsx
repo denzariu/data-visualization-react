@@ -58,7 +58,6 @@ export function getColorForFrequency (frequency: number, max_freq: number): stri
     if (frequency === 0) 
       return '#fff';
     
-    
     const hue = (frequency / max_freq) * 120;
     return `hsl(${hue}, 100%, 50%)`;
   };
