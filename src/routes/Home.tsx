@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { getBigrams, getColorForFrequency } from '../functions/bigrams';
+import { getBigrams, getColorForFrequency, getMaxFrequency } from '../functions/bigrams';
 import '../css/Home.css';
 
 type Props = {};
@@ -29,25 +29,63 @@ const Home: React.FC<Props> = () => {
     generateTableData();
   };
 
+  /* TODO: style from css */
   const generateTableData = () => {
+    const max_freq: number = getMaxFrequency(bigramFrequencies);
     const tableData: JSX.Element[][] = [];
-    for (let y = 0; y < 26; y++) {
+    for (let y = 0; y < 27; y++) {
       const row: JSX.Element[] = [];
-      for (let x = 0; x < 26; x++) {
-        const bigram = String.fromCharCode(97 + y) + String.fromCharCode(97 + x);
+      // Push first letter
+      row.push(
+        <td key={y == 26 ? " " : String.fromCharCode(65 + y)} style={{ backgroundColor: 'white' }}>
+          {y == 26 ? " " : String.fromCharCode(65 + y)}
+        </td>
+      );
+      // Push freq
+      for (let x = 0; x < 27; x++) {
+        
+        const bigram = (y == 26? " ": String.fromCharCode(97 + y)) +
+                       (x == 26? " ": String.fromCharCode(97 + x));
         const frequency = bigramFrequencies.get(bigram) || 0;
-        const color = getColorForFrequency(frequency);
+    
+        // DEBUG ONLY
+        console.log([bigram, bigramFrequencies.get(bigram) || 0])
+        
+        const color = getColorForFrequency(frequency, max_freq);
         row.push(
           <td key={x} style={{ backgroundColor: color }}>
             {frequency}
           </td>
         );
       }
+      
+
       tableData.push(row);
     }
+    const row: JSX.Element[] = [];
+    row.push(
+      <td key={String.fromCharCode(64)} style={{ backgroundColor: 'white' }}>
+        {" "}
+      </td>
+    );
+    for (let y = 0; y < 26; y++) {
+      row.push(
+        <td key={String.fromCharCode(65 + y)} style={{ backgroundColor: 'white' }}>
+          {String.fromCharCode(65 + y)}
+        </td>
+      );
+    }
+    row.push(
+      <td key={' '} style={{ backgroundColor: 'white' }}>
+        {' '}
+      </td>
+    );
+    tableData.push(row)
+    
     setTableData(tableData);
     console.log(tableData);
   };
+  
 
   return (
     <>
@@ -60,11 +98,13 @@ const Home: React.FC<Props> = () => {
         </div>
         
       </div>
-      <div>
-        {
-          tableDataBigram? tableDataBigram : <div></div>
-        }
-      </div>
+      <table>
+        <tbody>
+          {
+            tableDataBigram? tableDataBigram.map((row, index) => (<tr key={index}>{row}</tr>)) : <tr></tr>
+          }
+        </tbody>
+      </table>
     </>
   );
 };

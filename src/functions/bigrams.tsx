@@ -23,14 +23,14 @@ function nextLetterProbability(text:string): Map<string, number> {
         else 
             frequencyOfPair.set(pairOfLetters, 1);
     }
-
+    console.log(frequencyOfPair)
     return frequencyOfPair;
 }
 
 export function getBigrams(text:string): Map<string, number> {
     let textReplica: string = text;
 
-    const textToReplace: Array<string> = ['!', '.', ',', '\'', '"', '/', '@', ':', '+', '\\', '?', '#', '$', '&', '(', ')', '[', ']']
+    const textToReplace: Array<string> = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '!', '.', ',', '\'', '"', '/', '@', ':', '+', '\\', '?', '#', '$', '&', '(', ')', '[', ']']
     textToReplace.forEach(element => {
         textReplica = textReplica.replaceAll(element, '');
     });
@@ -40,10 +40,25 @@ export function getBigrams(text:string): Map<string, number> {
     return pairFrequency;
 }
 
-export function getColorForFrequency (frequency: number): string {
+export function getMaxFrequency(bigram: Map<string, number> | undefined): number {
+    
+    if (!bigram) return 1;
+
+    let max_freq = 1;
+
+    bigram.forEach(val => {
+        if (val > max_freq)
+            max_freq = val;
+    })
+    console.log(max_freq)
+    return max_freq;
+}
+
+export function getColorForFrequency (frequency: number, max_freq: number): string {
     if (frequency === 0) {
-      return '#333';
+      return '#000';
     }
-    const hue = 120 - (frequency / 500) * 120;
+    
+    const hue = (frequency / max_freq) * 120;
     return `hsl(${hue}, 100%, 50%)`;
   };

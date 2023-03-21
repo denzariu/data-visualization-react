@@ -8,12 +8,11 @@
   .text-input {
     width: 100%;
     height: 8rem;
-    font-size: 1.5rem;
+    font-size: 0.8rem;
     background-color: #000;
     color: #fff;
     border: none;
     outline: none;
-    padding: 1rem;
     margin-bottom: 1rem;
     border-radius: 0.5rem;
     resize: none;
@@ -22,6 +21,7 @@
   .button-group {
     display: flex;
     justify-content: center;
+    gap: 1rem;
   }
   
   .retro-button {
@@ -30,7 +30,7 @@
     outline: none;
     color: #fff;
     padding: 0.5rem 1rem;
-    margin-right: 1rem;
+    mmargin-right: 1rem;
     font-size: 1rem;
     font-weight: bold;
     border-radius: 0.5rem;
@@ -43,4 +43,30 @@
   .retro-button:hover {
     background-color: #777;
   }
-  
+
+body {
+  background-color: #000;
+}
+
+:root {
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+tbody {
+    
+}
+
+tbody tr {
+    display: flex;
+}
+
+tbody tr td {
+  display: flex;
+  justify-content: center;
+  width: 25px;
+  color:#000;
+}
