@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/data-visualization-react/static/css/main.e3813009.css",
+    "main.js": "/data-visualization-react/static/js/main.b365f3b4.js",
+    "index.html": "/data-visualization-react/index.html",
+    "main.e3813009.css.map": "/data-visualization-react/static/css/main.e3813009.css.map",
+    "main.b365f3b4.js.map": "/data-visualization-react/static/js/main.b365f3b4.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.e3813009.css",
+    "static/js/main.b365f3b4.js"
+  ]
+}
