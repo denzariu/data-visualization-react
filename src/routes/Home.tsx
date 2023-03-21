@@ -37,7 +37,7 @@ const Home: React.FC<Props> = () => {
       const row: JSX.Element[] = [];
       // Push first letter
       row.push(
-        <td key={y == 26 ? " " : String.fromCharCode(65 + y)} style={{ backgroundColor: 'black', width: '25px' }}>
+        <td key={y == 26 ? " " : String.fromCharCode(65 + y)} style={{ backgroundColor: 'black', width: '1rem' }}>
           {y == 26 ? " " : String.fromCharCode(65 + y)}
         </td>
       );

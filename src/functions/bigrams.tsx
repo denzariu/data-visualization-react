@@ -62,10 +62,10 @@ export function getColorForFrequency (frequency: number, max_freq: number): stri
     return `hsl(${hue}, 100%, 50%)`;
   };
 
-  export function getWidth (frequency: number, max_freq: number): number {
+  export function getWidth (frequency: number, max_freq: number): string {
     if (frequency === 0) 
-      return 0;
+      return `0rem`;
     
-    const width = (frequency / max_freq) * 21;
-    return width;
+    const width = (frequency / max_freq);
+    return `${width}rem`;
   };
