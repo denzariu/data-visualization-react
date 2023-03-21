@@ -56,7 +56,7 @@ const Home: React.FC<Props> = () => {
         row.push(
           <td key={x}>
             <div style={{backgroundColor: color, width: dataWidth, height: dataWidth}}>
-              
+          
             </div>
           </td>
         );
