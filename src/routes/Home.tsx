@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { getBigrams, getColorForFrequency, getMaxFrequency } from '../functions/bigrams';
+import { getBigrams, getColorForFrequency, getMaxFrequency, getWidth } from '../functions/bigrams';
 import '../css/Home.css';
 
 type Props = {};
@@ -37,7 +37,7 @@ const Home: React.FC<Props> = () => {
       const row: JSX.Element[] = [];
       // Push first letter
       row.push(
-        <td key={y == 26 ? " " : String.fromCharCode(65 + y)} style={{ backgroundColor: 'white' }}>
+        <td key={y == 26 ? " " : String.fromCharCode(65 + y)} style={{ backgroundColor: 'black', width: '25px' }}>
           {y == 26 ? " " : String.fromCharCode(65 + y)}
         </td>
       );
@@ -49,12 +49,15 @@ const Home: React.FC<Props> = () => {
         const frequency = bigramFrequencies.get(bigram) || 0;
     
         // DEBUG ONLY
-        console.log([bigram, bigramFrequencies.get(bigram) || 0])
+        //console.log([bigram, bigramFrequencies.get(bigram) || 0])
         
         const color = getColorForFrequency(frequency, max_freq);
+        const dataWidth = getWidth(frequency, max_freq);
         row.push(
-          <td key={x} style={{ backgroundColor: color }}>
-            {frequency}
+          <td key={x}>
+            <div style={{backgroundColor: color, width: dataWidth, height: dataWidth}}>
+              
+            </div>
           </td>
         );
       }
@@ -64,19 +67,19 @@ const Home: React.FC<Props> = () => {
     }
     const row: JSX.Element[] = [];
     row.push(
-      <td key={String.fromCharCode(64)} style={{ backgroundColor: 'white' }}>
+      <td key={String.fromCharCode(64)} style={{ backgroundColor: 'black' }}>
         {" "}
       </td>
     );
     for (let y = 0; y < 26; y++) {
       row.push(
-        <td key={String.fromCharCode(65 + y)} style={{ backgroundColor: 'white' }}>
+        <td key={String.fromCharCode(65 + y)} style={{ backgroundColor: 'black' }}>
           {String.fromCharCode(65 + y)}
         </td>
       );
     }
     row.push(
-      <td key={' '} style={{ backgroundColor: 'white' }}>
+      <td key={' '} style={{ backgroundColor: 'black' }}>
         {' '}
       </td>
     );
