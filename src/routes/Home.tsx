@@ -25,9 +25,13 @@ const Home: React.FC<Props> = () => {
   };
 
   const handleBigramButtonClick = () => {
-    setBigramFrequencies(getBigrams(inputText));
-    generateTableData();
+    setBigramFrequencies(getBigrams(inputText.toLowerCase()));
   };
+
+  React.useEffect(() => {
+    generateTableData();
+}, [bigramFrequencies])
+
 
   /* TODO: style from css */
   const generateTableData = () => {
