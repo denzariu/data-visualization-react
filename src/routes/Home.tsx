@@ -97,7 +97,7 @@ const Home: React.FC<Props> = () => {
   return (
     <>
       <div className="text-processor">
-        <textarea className="text-input" value={inputText} onChange={handleInputChange} />
+        <textarea className="text-input" placeholder='Enter your silly text...' value={inputText} onChange={handleInputChange} />
         <div className="button-group">
           <button className="retro-button" onClick={handleUppercaseButtonClick}>UPPERCASE</button>
           <button className="retro-button" onClick={handleBigramButtonClick}>Bigrams</button>
