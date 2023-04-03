@@ -54,9 +54,11 @@ export function getMaxFrequency(bigram: Map<string, number> | undefined): number
     return max_freq;
 }
 
-export function getColorForFrequency (frequency: number, max_freq: number): string {
+export function getColorForFrequency (frequency: number, max_freq: number, monochrome_col: boolean): string {
     if (frequency === 0) 
       return '#fff';
+    if (monochrome_col)
+      return `hsl(80, 100%, 50%)`;
     
     const hue = (frequency / max_freq) * 120;
     return `hsl(${hue}, 100%, 50%)`;
